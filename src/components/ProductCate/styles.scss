@@ -1,0 +1,18 @@
+.product-banner-wrapper  {
+  margin: 15px 0;
+  .slick-arrow.slick-prev,
+  .slick-arrow.slick-next{
+    display: none !important;
+    &::before {
+      display: none;
+    }
+  }
+}
+.product-banner-wrapper img {
+  border-radius: 10px;
+}
+.product-banner-wrapper .banner-1,
+.product-banner-wrapper .banner-2 {
+  border-radius: 10px;
+  width: 49.9%;
+}

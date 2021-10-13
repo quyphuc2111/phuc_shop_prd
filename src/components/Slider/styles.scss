@@ -1,0 +1,16 @@
+.slick-active.slick-current {
+  // border-bottom: 1px solid red;
+  font-weight: bold;
+}
+.slick-slider {
+  &:hover {
+    .slick-arrow.slick-prev,
+    .slick-arrow.slick-next {
+      display: block;
+    }
+  }
+}
+.slick-arrow.slick-prev,
+.slick-arrow.slick-next {
+  display: none ;
+}

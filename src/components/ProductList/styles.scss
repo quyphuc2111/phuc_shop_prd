@@ -1,0 +1,43 @@
+$white: #ffffff;
+$black-6: #666666;
+$white-e: #eeeeee;
+
+.product-title {
+    display: flex;
+    color: $black-6;
+    &__title {
+        width: 30%;
+    }
+    &__tag {
+        width: 70%;
+        font-size: 14px;
+        ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            li {
+                background-color: $white;
+                padding: 5px 10px;
+                border-radius: 30px;
+                transition: .35s ease-in-out;
+                a {
+                    text-decoration: none;
+                    color: $black-6;
+                   
+                }
+                &:not(:last-child) {
+                    margin-right: 10px;
+                }
+                &:hover {
+                    background-color: $white-e;
+                    transition: .35s ease-in-out;
+                }
+            }
+            
+        }
+    }
+}
+.product_list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}

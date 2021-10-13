@@ -1,0 +1,164 @@
+$white: #ffffff;
+
+.product-item {
+  height: 100%;
+  padding: 10px;
+  position: relative;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  background-color: $white;
+  &:hover {
+      z-index: 33;
+    img {
+        transform: scale(1.04);
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s ease-in-out;
+      }
+  }
+  &:hover:before {
+    
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: calc(100% + 40px);
+    border: solid 1px #dddddd;
+    border-radius: 2px;
+    box-shadow: 0 3px 6px 0 rgb(0 0 0 / 16%);
+    // background-color: #ffffff;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+&:hover &__btn {
+    visibility: visible;
+    opacity: 1;
+}
+
+  &__image {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px !important;
+    position: relative;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    a {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+    img {
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s ease-in-out;
+    }
+  }
+
+  &__sticker {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    .sticker-percent {
+      width: 39px;
+      height: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 0 5px 0 !important;
+      margin: 0 !important;
+      background-image: url(https://cdn.cellphones.com.vn/media/icon/icons_menubar-11.svg);
+      background-repeat: no-repeat;
+      background-size: 900px;
+      background-position: -594px -255px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      position: absolute;
+      top: -25px;
+      left: 0;
+      overflow: hidden;
+    }
+  }
+
+  &__info {
+    padding: 0;
+    h3 {
+      margin-bottom: 0;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.4em;
+      color: #222222;
+      text-align: left;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .special-price {
+      font-size: 14px;
+      font-weight: 700;
+      color: #d70018;
+    }
+    .old-price {
+      font-size: 12px;
+      color: #716b6b;
+      text-decoration: line-through;
+      margin: 0 !important;
+    }
+  }
+  &__btn {
+    visibility: hidden;
+    display: flex;
+    padding: 10px;
+    position: absolute;
+    left: 1px;
+    bottom: -40px;
+    opacity: 0;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    right: 1px;
+    background: white;
+    .btn {
+      width: calc(100% - 10px);
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 2px;
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .btn-buy {
+        margin-right: 5px;
+      background-image: linear-gradient(to bottom, #f52f32, #d70018 50%);
+    }
+    .btn-compare {
+      background-image: linear-gradient(
+        to bottom,
+        rgba(108, 117, 125, 0.8),
+        #6c757d 50%
+      );
+    }
+  }
+}

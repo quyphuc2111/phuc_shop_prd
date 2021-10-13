@@ -1,0 +1,166 @@
+
+.banner {
+    margin-top: 15px;
+    
+}
+.box-sliding {
+  display: flex;
+
+  &__left {
+    width: 17%;
+    border-radius: 7px;
+
+  }
+
+  .box-list-menu {
+    min-height: 375.56px;
+    border-radius: 2px;
+    background: #ffffff;
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+    position: relative;
+  }
+  .box-child-list-menu {
+    width: 220px;
+    min-height: 375.56px;
+    visibility: hidden;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
+    position: absolute;
+    top: 0;
+    left: unset;
+    right: -220px;
+    z-index: 100;
+    opacity: 0;
+  }
+  .list-menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .item-menu {
+    min-height: 31.3px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    background: 0 0;
+    cursor: pointer;
+    &:hover {
+        border-radius: 2px;
+        background: #F3F4F6;
+        & > .box-child-list-menu {
+            visibility: visible;
+             opacity: 1;
+        }
+    }
+    a {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #343a40;
+        i:first-child {
+            margin-right: 5px;
+           font-size: 18px;
+           
+        }
+        span {
+            flex: 1;
+            font-size: 12px;
+            font-weight: 700;
+            color: #343a40;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1;
+        }
+        i:last-child {
+            margin-left: 5px;
+            line-height: 1;
+        }
+    }
+  }
+  
+
+  &__center {
+    width: 57%;
+    color: #343a40;
+    margin: 0 15px;
+    background-color: #fff;
+    border-radius: 7px;
+    img {
+      max-width: 100%;
+      object-fit: cover;
+      border-top-left-radius: 7px;
+      border-top-right-radius: 7px;
+    }
+  }
+  &__right {
+    width: 23%;
+    max-height: 375.56px;
+    border-radius: 7px;
+    img {
+      max-width: 100%;
+      object-fit: cover;
+      border-radius: 7px;
+    }
+  }
+}
+
+.box-brand ul {
+  display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+
+  li {
+  height: 50px;
+  flex: 0 1 calc((100% - 30px) / 4);
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background: #ffffff;
+  box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
+  }
+  a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #666666;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+  }
+  .icon_brand {
+    width: 100%;
+    max-width: 120px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+    /* background-image: url(https://cellphones.com.vn/media/icon/full_brand-8.png); */
+    background-repeat: no-repeat;
+    background-size: 350px;
+  }
+  .icon-apple {
+    width: 100px;
+    background-position: -242px -131px;
+  }
+  .icon-samsung {
+    width: 108px;
+    background-position: -5px -102px;
+  }
+  .icon-asus {
+    background-position: -160px -21px;
+    background-size: 440px;
+  }
+  .icon-xiaomi {
+    width: 105px;
+    background-position: -124px -131px;
+}
+}

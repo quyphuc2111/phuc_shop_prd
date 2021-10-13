@@ -1,0 +1,26 @@
+.qp-container {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.w-100 {
+    width: 100%;
+}
+.d-flex {
+    display: flex;
+}
+.align-items-center {
+    align-items: center;
+}
+.justify-between {
+    justify-content: space-between;
+}
+.direction-col {
+    flex-direction: column;
+}
+.border {
+    border: 1px solid #eeeeee;
+}
+.radius-7 {
+    border-radius: 7px;
+}
