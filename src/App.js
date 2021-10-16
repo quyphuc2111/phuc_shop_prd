@@ -9,8 +9,9 @@ function App() {
   return (
     <div
       className="container"
-      style={{ backgroundColor: "#f5f8fd", height: "2000px" }}
+      style={{ backgroundColor: "#f5f8fd"}}
     >
+      <div className="header-overlay" onClick={() => {document.querySelector(".header-overlay").classList.remove("active")}}></div>
       <Router>
       <Header />
         <Switch>

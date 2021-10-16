@@ -6,7 +6,6 @@ export const setProducts = (product) => {
         payload: product,
     }
 }
-
 export const selectedProducts = (product) => {
     return {
         type: ActionTypes.SELECTED_PRODUCT,
@@ -16,5 +15,11 @@ export const selectedProducts = (product) => {
 export const removeSelectedProducts = () => {
     return {
         type: ActionTypes.REMOVE_SELECTED_PRODUCT,
+    }
+}
+export const filterProducts = (product) => {
+    return {
+        type: ActionTypes.FILTER_PRODUCT,
+        payload: product,
     }
 }

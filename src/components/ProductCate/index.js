@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -28,12 +28,14 @@ function bubbleSort(array) {
   }
   return array;
 }
-
-
-
+function unique(arr) {
+  return Array.from(new Set(arr)) //
+}
 export default function ProductCate() {
+  // const [prod, setProd] = useState("products")
+  // console.log(prod)
   const products = useSelector((state) => state.allProducts.products);
-  console.log(products)
+ 
   const arrPrice = [];
   products.map((item) => {
     if (item.price) {
@@ -41,18 +43,22 @@ export default function ProductCate() {
     } else {
       arrPrice.push(item.special_price);
     }
-    return arrPrice
+    return arrPrice;
   });
-  const sort = bubbleSort(arrPrice)
-  console.log(sort);
- 
-    products.map((p) => {
-      sort.map((e) => {
-        if(p.special_price === e || p.price === e) {
-          console.log(p.special_price)
-        }
-      })
-    })
+  const sort = bubbleSort(arrPrice);
+  // console.log(sort);
+  const isSortLowPrice = []
+  sort.map((p) => {
+  
+    products.find((e) => {
+      if(e.special_price === p || e.price === p)  {
+        isSortLowPrice.push(e)
+      }
+    });
+  });
+  // console.log("al", unique(isSortLowPrice))
+
+  // const isSortHighPrice = isSortLowPrice.reverse()
   const { category } = useParams();
   const dispatch = useDispatch();
   const fetchProductCate = async (cate) => {
@@ -83,16 +89,16 @@ export default function ProductCate() {
           <div className="product-filter__name">Sắp xếp theo</div>
           <div className="product-filter__option d-flex">
             <div className="product-filter__low-price">
-              <div
-               
-                className="border"
-                style={{ padding: "7px" }}
-              >
+              <div onClick={() => {
+                dispatch(setProducts(unique(isSortLowPrice)))
+              }} className="border filter rainbow" >
                 Giá thấp
               </div>
             </div>
             <div className="product-filter__high-price">
-              <div className="border" style={{ padding: "7px" }}>
+              <div  onClick={() => {
+                dispatch(setProducts(unique(isSortLowPrice.reverse())))
+              }} className="border filter rainbow">
                 Giá cao
               </div>
             </div>

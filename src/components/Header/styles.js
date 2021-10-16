@@ -8,23 +8,25 @@ export const NavBar = styled.div`
     height: 65px;
     background-color: ${(props) => props.backgroundColor};
     color: #eeeeee;
+    position: fixed;
+    z-index: 99;
 `;
 export const Logo = styled.img`
     height: 40px;
 `;
-export const Input = styled.input`
-    width: 23%;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    padding: 7px 15px;
-    text-align: center;
-    transition: all .35s ease-in-out;
-    &:hover, &:focus {
-        width: 30%;
-        transition: all .35s ease-in-out;
-    }
-`;
+// export const Input = styled.input`
+//     width: 23%;
+//     border-radius: 10px;
+//     border: none;
+//     outline: none;
+//     padding: 7px 15px;
+//     text-align: center;
+//     transition: all .35s ease-in-out;
+//     &:hover, &:focus {
+//         width: 30%;
+//         transition: all .35s ease-in-out;
+//     }
+// `;
 export const BoxAbout = styled.div`
     display: flex;
 `;

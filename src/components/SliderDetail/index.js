@@ -1,62 +1,62 @@
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.min.css";
+
 import "./styles.scss";
-import {GrFormNext, GrFormPrevious} from "react-icons/gr"
-export const  PreviousBtn = (props) => {
-    const {className, onClick} = props;
-    // console.log(props)
-    return (
-        <div className={className} onClick={onClick}>
-             <GrFormPrevious />
-        </div>
-    )
-}
-export const NextBtn = (props) => {
-    const {className, onClick} = props;
-    return (
-        <div className={className} onClick={onClick}>
-            <GrFormNext />
-        </div>
-    )
-}
+
+// import Swiper core and required modules
+import SwiperCore, { Navigation, Thumbs } from "swiper";
+
+// install Swiper modules
+SwiperCore.use([Navigation, Thumbs]);
+
 export default function SliderDetail(props) {
-  const { images } = props.product;
-  // console.log("sl", images);
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const {images} = props.product
+
   return (
-    <div className="border radius-7">
-      <Slider
-        autoplay
-        autoplaySpeed={2200}
-        dots
-        initialSlide={2}
-        infinite
-        prevArrow={<PreviousBtn />}
-        nextArrow={<NextBtn />}
-        customPaging={(i) => {
-          return (
-            <div>
-              <img
-                src={images[i]}
-                alt=""
-                style={{ width: "50px", height: "50px", objectFit: "cover" }}
-              />
-            </div>
-          );
+    <>
+      <Swiper
+        style={{
+          "--swiper-navigation-color": "#fff",
+          "--swiper-pagination-color": "#fff",
         }}
-        dotsClass="slick-dots custom-indicator"
+        
+        navigation={true}
+        thumbs={{ swiper: thumbsSwiper }}
+        className="mySwiper2"
       >
-        {images === undefined ? (
-          <div>Đợi tí..</div>
-        ) : (
-          images.map((item) => (
-            <div key={item}>
-              <img src={item} alt="" style={{ width: "100%" }} />
-            </div>
-          ))
-        )}
-      </Slider>
-    </div>
+      {
+        images === undefined ? "" : images.map((imgSrc) => {
+          return (
+            <SwiperSlide key={imgSrc}>
+              <img src={imgSrc} alt="" />
+            </SwiperSlide>
+          )
+        })
+      }
+       
+      </Swiper>
+      <Swiper
+        onSwiper={setThumbsSwiper}
+        spaceBetween={10}
+        slidesPerView={4}
+        freeMode={true}
+        watchSlidesProgress={true}
+        className="mySwiper"
+      >
+          {
+        images === undefined ? "" : images.map((imgSrc) => {
+          return (
+            <SwiperSlide key={imgSrc}>
+              <img src={imgSrc} alt="" />
+            </SwiperSlide>
+          )
+        })
+      }
+      </Swiper>
+    </>
   );
 }

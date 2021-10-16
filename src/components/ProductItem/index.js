@@ -3,6 +3,9 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./styles.scss";
 
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
 const ProductItem = () => {
   // console.log(props.handleClick)
   const products = useSelector((state) => state.allProducts.products);
@@ -14,9 +17,9 @@ const ProductItem = () => {
   
   <div className="product-item">
         <div className="product-item__image">
-          <Link to="/prod">
+          <div >
             <img alt={product.name} src={product.image} />
-          </Link>
+          </div>
           <div className="product-item__sticker">
             <p className="sticker-percent">-{100 - Math.floor(product.special_price * 100 / product.old_price) }%</p>
           </div>
@@ -28,8 +31,8 @@ const ProductItem = () => {
           <div className="product-item__price d-flex align-items-center ">
             {product.special_price || product.old_price ? (
               <>
-                <p className="special-price">{product.special_price} ₫</p>
-                <p className="old-price">{product.old_price}₫</p>
+                <p className="special-price">{numberWithCommas(product.special_price)} ₫</p>
+                <p className="old-price">{numberWithCommas(product.old_price)}₫</p>
               </>
             ) : (
               <p className="special-price">{product.price} ₫</p>
@@ -37,12 +40,12 @@ const ProductItem = () => {
           </div>
         </div>
         <div className="product-item__btn">
-          <Link className="btn btn-buy" to="/cart">
+          <div className="btn btn-buy" >
             Mua ngay
-          </Link>
-          <Link className="btn btn-compare" to="/compare">
+          </div>
+          <div className="btn btn-compare" >
             So sánh
-          </Link>
+          </div>
         </div>
       </div>
     </Link>
