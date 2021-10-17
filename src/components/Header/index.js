@@ -14,10 +14,7 @@ import SearchForm from "../SearchForm";
 export default function Header() {
   const [allProducts, setAllProduct] = useState([]);
   const [filterData, setFilterData] = useState([]);
-  // const products = useSelector((state) => state.allProducts.products);
-  // console.log(products)
-  // const randomFiveProduct = Array.from(products).sort(() => Math.random() - Math.random()).slice(0,5)
-  // console.log(randomFiveProduct)
+
   const fetchAllProduct = async () => {
     const response = await axios
       .get(`https://phucshopv2.herokuapp.com/api/products`)
@@ -25,8 +22,6 @@ export default function Header() {
         console.log("Err", err);
       });
     setAllProduct(response.data);
-    // console.log("fet", typeof response.data.capacities);
-    // dispatch(selectedProducts(response.data));
   };
   useEffect(() => {
     fetchAllProduct();
@@ -46,15 +41,13 @@ export default function Header() {
     }
   }
 
-  // console.log(allProducts);
-
   return (
     <NavBar
       backgroundColor="black"
       onClick={(e) => {
         const overlay = document.querySelector(".header-overlay");
         const inputSearch = document.querySelector(".input-search");
-        if (e.target != inputSearch) {
+        if (e.target !== inputSearch) {
           overlay.classList.remove("active");
         } else {
           overlay.classList.add("active");
@@ -65,7 +58,7 @@ export default function Header() {
         <Link to="/" id="RouterNavLink">
           <Logo src={BrandImage} />
         </Link>
-        {/* <Input placeholder="Mày muốn gì!?" /> */}
+
         <div className="box-search-wrapper">
           <div className="box-search">
             <SearchForm
@@ -73,7 +66,7 @@ export default function Header() {
               onSubmit={handleFilterChange}
             />
           </div>
-          {filterData.length != 0 ? (
+          {filterData.length !== 0 ? (
             <ul className="box-search-result">
               {filterData.slice(0, 10).map((product) => {
                 return (
@@ -116,10 +109,10 @@ export default function Header() {
           </ItemAbout>
 
           <ItemAbout>
-            <FiShoppingCart />
-            <p>
-              Giỏ <br /> hàng
-            </p>
+            <Link to="/cart">
+              <FiShoppingCart />
+              <p>Giỏ hàng</p>
+            </Link>
           </ItemAbout>
         </BoxAbout>
       </div>

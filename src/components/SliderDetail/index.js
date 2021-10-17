@@ -24,6 +24,7 @@ export default function SliderDetail(props) {
           "--swiper-pagination-color": "#fff",
         }}
         
+        spaceBetween={10}
         navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
         className="mySwiper2"
