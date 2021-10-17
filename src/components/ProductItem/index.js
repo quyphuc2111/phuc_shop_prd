@@ -6,9 +6,9 @@ import "./styles.scss";
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
-const ProductItem = () => {
+const ProductItem = (props) => {
   // console.log(props.handleClick)
-  const products = useSelector((state) => state.allProducts.products);
+const {products} = props
   const renderList = products.map((product) => {
     // console.log(encodeURI(product.name))
     return (

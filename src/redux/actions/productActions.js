@@ -23,3 +23,16 @@ export const filterProducts = (product) => {
         payload: product,
     }
 }
+export const addProductToCart = (cart) => {
+    
+    return {
+        type: ActionTypes.ADD_PRODUCT_TO_CART,
+        payload: cart,
+    }
+}
+export const removeProductToCart = (product) => {
+    return {
+        type: ActionTypes.REMOVE_PRODUCT_TO_CART,
+        payload: product
+    }
+}
