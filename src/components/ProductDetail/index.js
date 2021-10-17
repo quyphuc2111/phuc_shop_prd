@@ -14,22 +14,30 @@ import Loading from "../Loading";
 
 export default function ProductDetail() {
   const product = useSelector((state) => state.product);
-  // console.log(product)
   const [loading, setLoading] = useState(true);
+  const [capacities, setCapacities] = useState({
+    activeObject: null,
+    objects: [],
+  });
+
   const dispatch = useDispatch();
   const params = useParams();
   const productName = encodeURI(params.name);
-  const { capacities, image, tskt } = product;
+  const { image, tskt } = product;
   const [textShow, setTextShow] = useState("Show More");
-  const [selectColor, setSelectColor] = useState({});
+  const [selectColor, setSelectColor] = useState({
+    activeObject: null,
+    objects: [],
+  });
 
   const fetchProductDetail = async (name) => {
-      const response = await axios
+    const response = await axios
       .get(`https://phucshopv2.herokuapp.com/api/products/${name}`)
       .catch((err) => {
         console.log("Err", err);
       });
     dispatch(selectedProducts(response.data));
+
     setLoading(false);
   };
   useEffect(() => {
@@ -40,11 +48,52 @@ export default function ProductDetail() {
       return () => {
         dispatch(removeSelectedProducts());
       };
-    })
+    });
   }, [productName]);
-  function handleClickBuy() {
-   dispatch(addProductToCart(product))
+  useEffect(() => {
+    setCapacities({ ...capacities, objects: product.capacities });
+  }, [product]);
+
+
+  function toggleActive(index) {
+    setCapacities({ ...capacities, activeObject: capacities.objects[index] });
+    setSelectColor({
+      ...selectColor,
+      objects: capacities.objects[index].color,
+    });
+    // console.log("capa", capacities.objects[index].color)
   }
+  function changeActiveColor(index) {
+    setSelectColor({
+      ...selectColor,
+      activeObject: selectColor.objects[index],
+    });
+  }
+  function toggleActiveStyles(index) {
+    if (capacities.objects[index] === capacities.activeObject) {
+      return "item-linked act";
+    } else {
+      return "item-linked";
+    }
+  }
+  function toggleActiveColor(index) {
+    if (selectColor.objects[index] === selectColor.activeObject) {
+      return "item-linked act";
+    } else {
+      return "item-linked";
+    }
+  }
+
+  function handleClickBuy() {
+    console.log("btn",capacities.activeObject)
+    console.log("cl", selectColor.activeObject)
+    dispatch(addProductToCart({
+      product: product,
+      capacities: capacities.activeObject,
+      color: selectColor.activeObject,
+    }));
+  }
+
 
   return (
     <>
@@ -68,18 +117,15 @@ export default function ProductDetail() {
                   </div>
                 </div>
                 <div className="box-linked">
-                  {capacities === undefined
+                  {capacities.objects === undefined
                     ? ""
-                    : capacities.map((p, i) => {
+                    : capacities.objects.map((p, i) => {
                         return (
                           <div
-                            className="item-linked"
+                            className={toggleActiveStyles(i)}
                             key={i}
-                            onClick={(e) => {
-                              if (e.target.value === p.capacities) {
-                                document.querySelector(".item-linked").classList.toggle("act")
-                                setSelectColor(p);
-                              }
+                            onClick={() => {
+                              toggleActive(i);
                             }}
                           >
                             <strong>{p.capacity}</strong>
@@ -94,16 +140,20 @@ export default function ProductDetail() {
                     className="box-content"
                     style={{ listStyle: "none", padding: 0 }}
                   >
-                    {selectColor.color === undefined
-                      ? ""
-                      : selectColor.color.map((item) => {
-                          return (
-                            <li className="item-linked" key={item.color}>
-                              <strong>{item.color}</strong>
-                              <span>{item.price}</span>
-                            </li>
-                          );
-                        })}
+                    {selectColor.objects.map((item, index) => {
+                      return (
+                        <li
+                          className={toggleActiveColor(index)}
+                          key={item.color}
+                          onClick={() => {
+                            changeActiveColor(index);
+                          }}
+                        >
+                          <strong>{item.color}</strong>
+                          <span>{item.price}</span>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
                 <div className="btn-buy" onClick={handleClickBuy}>

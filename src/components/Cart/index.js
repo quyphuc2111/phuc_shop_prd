@@ -21,25 +21,33 @@ export default function Cart() {
                </div>
                <div className="product-cart__body">
                    {
-                       allCart.map((item) => {
-                            return (
-                                <div className="prd-item">
-                                    <div className="prd-item__image">
-                                        <img src={item.image} alt=""  />
+                       allCart === undefined ? "": allCart.map((item) => {
+                        return (
+                            <div className="prd-item" key={item.product.name}>
+                                <div className="prd-item__image">
+                                    <img src={item.product.image} alt=""  />
+                                </div>
+                                <div className="prd-item__info">
+                                    <div className="prd-name">{item.product.name}</div>
+                                    <div className="prd-capacities">{item.capacites === undefined || null ? "" : item.capacites.capacity }</div>
+                                    <div className="prd-color">{item.color === undefined || null ? "" :item.color}</div>
+                                    <div className="prd-price d-flex">
+                                        <div className="prd-price-special-price">{item.product.special_price}</div>
+                                        <div className="prd-price-old-price">{item.product.old_price}</div>
                                     </div>
-                                    <div className="prd-item__info">
-                                        <div className="prd-name">{item.name}</div>
-                                        <div className="prd-price d-flex">
-                                            <div className="prd-price-special-price">{item.special_price}</div>
-                                            <div className="prd-price-old-price">{item.old_price}</div>
-                                        </div>
-                                    </div>
-                                    <div className="prd-option">
-                                        <div onClick={() => {dispatch(removeProductToCart(item))}}>Xóa khỏi giỏ</div>
+                                    
+                                </div>
+                                <div className="prd-option">
+                                    <div onClick={() => {dispatch(removeProductToCart(item))}}>Xóa khỏi giỏ</div>
+                                    <div>
+                                        <input type="submit" value="-" />
+                                        <span>1</span>
+                                        <input type="submit" value="+" />
                                     </div>
                                 </div>
-                            )
-                       })
+                            </div>
+                        )
+                   })
                    }
                </div>
             </div>

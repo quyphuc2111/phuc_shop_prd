@@ -69,7 +69,7 @@ const ProductList = () => {
                   <li>
                     <Link to="/product/vivo">Vivo</Link>
                   </li>
-                  <li>Xem tất cả</li>
+                
                 </ul>
               </div>
             </div>
