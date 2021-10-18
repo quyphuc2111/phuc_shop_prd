@@ -48,7 +48,7 @@ export default function ProductDetail() {
       return () => {
         dispatch(removeSelectedProducts());
       };
-    });
+    },1800);
   }, [productName]);
   useEffect(() => {
     setCapacities({ ...capacities, objects: product.capacities });
