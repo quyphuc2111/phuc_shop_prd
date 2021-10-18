@@ -6,12 +6,14 @@ import "./styles.scss";
 import { BsTelephone } from "react-icons/bs";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { FiShoppingCart, FiTruck } from "react-icons/fi";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import SearchForm from "../SearchForm";
 
 export default function Header() {
+  const allCart = useSelector((state) =>state.cart)
+  // console.log("head", allCart)
   const [allProducts, setAllProduct] = useState([]);
   const [filterData, setFilterData] = useState([]);
 
@@ -99,21 +101,23 @@ export default function Header() {
         </div>
 
         <BoxAbout>
-          <ItemAbout>
+          <ItemAbout href="tel:800 2097">
             <BsTelephone />
-            <p>
+            <p style={{ marginLeft: "5px", textAlign: "center" }}>
               Gọi mua hàng
               <br />
               <strong>1800 2097</strong>
             </p>
           </ItemAbout>
 
-          <ItemAbout>
-            <Link to="/cart">
+          <Link to="/cart" className="cart">
+            <div className="border d-flex ">
               <FiShoppingCart />
               <p>Giỏ hàng</p>
-            </Link>
-          </ItemAbout>
+              <div className="cart__count">{allCart.length}</div>
+            </div>
+          
+          </Link>
         </BoxAbout>
       </div>
     </NavBar>

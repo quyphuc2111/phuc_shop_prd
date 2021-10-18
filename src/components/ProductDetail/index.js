@@ -83,14 +83,18 @@ export default function ProductDetail() {
       return "item-linked";
     }
   }
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
 
   function handleClickBuy() {
-    console.log("btn",capacities.activeObject)
-    console.log("cl", selectColor.activeObject)
+    // console.log("btn",capacities.activeObject)
+    // console.log("cl", selectColor.activeObject)
     dispatch(addProductToCart({
       product: product,
       capacities: capacities.activeObject,
-      color: selectColor.activeObject,
+      color: selectColor.activeObject ===null ? {price: product.special_price} :selectColor.activeObject,
+      quantity: 1
     }));
   }
 
@@ -111,9 +115,9 @@ export default function ProductDetail() {
                 <div className="box-info">
                   <div className="box-info__price d-flex align-items-center">
                     <div className="special-price">
-                      {product.special_price}₫
+                      {numberWithCommas(product.special_price)}₫
                     </div>
-                    <div className="old-price">{product.old_price} ₫</div>
+                    <div className="old-price">{numberWithCommas(product.old_price)} ₫</div>
                   </div>
                 </div>
                 <div className="box-linked">
@@ -129,7 +133,7 @@ export default function ProductDetail() {
                             }}
                           >
                             <strong>{p.capacity}</strong>
-                            <span>{p.price} ₫</span>
+                            <span>{numberWithCommas(p.price)} ₫</span>
                           </div>
                         );
                       })}
@@ -150,7 +154,7 @@ export default function ProductDetail() {
                           }}
                         >
                           <strong>{item.color}</strong>
-                          <span>{item.price}</span>
+                          <span>{numberWithCommas(item.price)}</span>
                         </li>
                       );
                     })}

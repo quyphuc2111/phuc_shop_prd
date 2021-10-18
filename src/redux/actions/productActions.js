@@ -30,6 +30,20 @@ export const addProductToCart = (cart) => {
         payload: cart,
     }
 }
+export const increaseQuantity = (key) => {
+    
+    return {
+        type: ActionTypes.INCREASE_QUANTITY,
+        payload: key,
+    }
+}
+export const decreaseQuantity = (key) => {
+    
+    return {
+        type: ActionTypes.DECREASE_QUANTITY,
+        payload: key,
+    }
+}
 export const removeProductToCart = (product) => {
     return {
         type: ActionTypes.REMOVE_PRODUCT_TO_CART,

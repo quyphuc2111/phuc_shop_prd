@@ -1,52 +1,3 @@
-// .detail-product__left .slick-slider {
-//   &:hover {
-//     .slick-arrow.slick-prev,
-//     .slick-arrow.slick-next {
-//       display: block;
-//     }
-//   }
-// }
-// .detail-product__left .slick-arrow.slick-prev,
-// .detail-product__left .slick-arrow.slick-next {
-//   background: #333333;
-//   width: 50px;
-//   height: 80px;
-
-//   z-index: 1;
-//   display: none;
-//   // position: relative;
-//   &::before {
-//     // font-family: sans-serif;
-//     position: absolute;
-//     top: 50%;
-//     left: 50%;
-//     transform: translate(-50%, -50%);
-//     color: #f7971e;
-//   }
-// }
-// .detail-product__left .slick-prev {
-//   left: 0;
-//   border-top-right-radius: 100%;
-//   border-bottom-right-radius: 100%;
-// }
-// .detail-product__left .slick-next {
-//   right: 0;
-//   border-top-left-radius: 100%;
-//   border-bottom-left-radius: 100%;
-// }
-// .detail-product__left .custom-indicator {
-//   bottom: -70px;
-//   overflow: scroll;
-//   display: flex !important;
-//   li {
-//     width: 50px;
-//     height: 50px;
-//     filter: grayscale(100%);
-//   }
-//   .slick-active {
-//     filter: grayscale(0%);
-//   }
-// }
 .swiper-slide {
   border: 1px solid #D1D5DB;
   border-radius: 10px;
@@ -57,11 +8,9 @@
   border-radius: 10px;
   object-position: 50% 50%;
 }
-// .mySwiper .swiper-slide.swiper-slide-active {
-//   border: 1px solid red;
-// }
+
 .mySwiper .swiper-slide-thumb-active {
-  border: 1px solid red;
+  border: 1px solid #f7971e;
 }
 .mySwiper .swiper-slide {
   border-radius: 10px;

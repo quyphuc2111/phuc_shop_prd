@@ -34,4 +34,5 @@ export const ItemAbout = styled.a`
     display: flex;
     align-items: center;
     margin: 0 15px;
+    color: white;
 `;

@@ -56,6 +56,7 @@
         border-radius: 10px;
         color: #444444;
         text-align: center;
+        cursor: pointer;
       }
       strong {
         font-size: 12px;
@@ -85,6 +86,7 @@
           border-radius: 10px;
           color: #444444;
           text-align: center;
+          cursor: pointer;
         }
         strong {
           font-size: 12px;
@@ -111,11 +113,13 @@
       flex-direction: column;
       text-align: center;
       border-radius: 8px;
-     
+      color: #000;
+      cursor: pointer;
       strong {
         text-transform: uppercase;
         font-weight: bold;
-        margin: 5px 0;
+        margin-bottom: 5px;
+
       }
     }
   }
@@ -161,10 +165,12 @@
       border-radius: 30px ;
       .btn-show-more {
         padding: 8px 0;
-        
+       
       }
       &:hover {
-        border: 1px solid red;
+       background: #f7971e;
+       font-weight: bold;
+   
       }
     }
   }

@@ -72,3 +72,53 @@
 svg {
     font-size: 20px;
 }
+.cart {
+    width: 122px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 18px;
+    position: relative;
+    &__count {
+        position: absolute;
+        top: 5px;
+        right: -5px;
+        background: #eee;
+       height: 23px;
+       width: 23px;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       text-align: center;
+        border-radius: 100%;
+        font-size: 15px;
+        font-weight: bold;
+        color: #000;
+    }
+  .border {
+      padding: 8px;
+      border-radius: 5px;
+  }
+    p {
+        margin: 0 0 0 5px;
+        
+    }
+    &:hover {
+        color: #000;
+        font-weight: bold;
+       
+        .border {
+            background-color: #f7971e;
+            outline: none;
+            border: none;
+            
+        }
+        svg {
+            font-weight: bold;
+        }
+        .cart__count {
+            background: #f7971e;
+        }
+    }
+}
